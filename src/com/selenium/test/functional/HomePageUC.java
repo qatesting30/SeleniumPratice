@@ -55,7 +55,12 @@ public class HomePageUC {
 		Switch.switchWindowsAndtabs(driver, 1);
 		Thread.sleep(3000);
 		SignIn.autoSignIn(driver);
-		
+		log.debug("Auto sign completed");
+		Thread.sleep(3000);
+		hp.widget().click();
+		log.debug("Clicked on widget tab");
+		hp.datePicker().click();
+		log.debug("Clicked on date picker");
 		
 	}
 

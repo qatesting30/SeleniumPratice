@@ -1,5 +1,6 @@
 package com.selenium.project.spec;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -10,6 +11,7 @@ import com.selenium.generic.util.GetProperties;
 public class GetDriver {
 	
 	public static WebDriver driver;
+	public static Logger log = Logger.getLogger("devpinoyLogger");
 	
 	public static WebDriver getDriverInstance()
 	{
@@ -20,6 +22,7 @@ public class GetDriver {
 		if(browserName.equalsIgnoreCase("CHROME")){
 			System.setProperty("webdriver.chrome.driver", "./DriverSource/chromedriver.exe");
 			driver = new ChromeDriver();
+			log.debug("Chrome browser initiated");
 		}
 		else if(browserName.equalsIgnoreCase("FIREFOX")){
 			System.setProperty("webdriver.gecko.driver", "./DriverSource/geckodriver.exe");
