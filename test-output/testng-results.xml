@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="17094" started-at="2017-07-23T04:15:31Z" finished-at="2017-07-23T04:15:48Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="17094" started-at="2017-07-23T04:15:31Z" finished-at="2017-07-23T04:15:48Z">
+      <class name="com.selenium.test.functional.HomePageUC">
+        <test-method status="PASS" signature="launchBrowser()[pri:0, instance:com.selenium.test.functional.HomePageUC@3532ec19]" name="launchBrowser" is-config="true" duration-ms="15801" started-at="2017-07-23T09:45:31Z" finished-at="2017-07-23T09:45:47Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchBrowser -->
+        <test-method status="PASS" signature="HomePageTC_001()[pri:0, instance:com.selenium.test.functional.HomePageUC@3532ec19]" name="HomePageTC_001" duration-ms="1259" started-at="2017-07-23T09:45:47Z" finished-at="2017-07-23T09:45:48Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- HomePageTC_001 -->
+      </class> <!-- com.selenium.test.functional.HomePageUC -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
