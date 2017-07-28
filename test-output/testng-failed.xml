@@ -3,11 +3,16 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="com.selenium.test.smoke.LaunchBrowserTest">
+      <class name="com.selenium.test.functional.DatePickerUC">
         <methods>
+          <include name="getNames"/>
+          <include name="TC_003"/>
+          <include name="getStatus"/>
+          <include name="TC_002"/>
+          <include name="TC_004"/>
           <include name="launchBrowser"/>
         </methods>
-      </class> <!-- com.selenium.test.smoke.LaunchBrowserTest -->
+      </class> <!-- com.selenium.test.functional.DatePickerUC -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

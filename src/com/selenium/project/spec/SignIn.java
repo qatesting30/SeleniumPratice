@@ -21,7 +21,7 @@ public class SignIn {
 	   wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//a[contains(text(),'Signin')]")))).click();
 	   log.debug("Clicked on signIn button");
 	   List<WebElement>hidden = driver.findElements(By.cssSelector("div[style*='block']"));
-	   System.out.println("hidden elements: "+hidden.size());
+	   //System.out.println("hidden elements: "+hidden.size());
 	   WebElement ele = hidden.get(1);
 	   ele.findElement(By.name("username")).sendKeys("qatesting30@gmail.com");
 	   log.debug("username Entered");

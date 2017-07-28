@@ -1,21 +1,128 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+<testng-results skipped="0" failed="0" ignored="0" total="4" passed="4">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="17094" started-at="2017-07-23T04:15:31Z" finished-at="2017-07-23T04:15:48Z">
+  <suite name="Default suite" duration-ms="17022" started-at="2017-07-28T13:00:33Z" finished-at="2017-07-28T13:00:50Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="17094" started-at="2017-07-23T04:15:31Z" finished-at="2017-07-23T04:15:48Z">
-      <class name="com.selenium.test.functional.HomePageUC">
-        <test-method status="PASS" signature="launchBrowser()[pri:0, instance:com.selenium.test.functional.HomePageUC@3532ec19]" name="launchBrowser" is-config="true" duration-ms="15801" started-at="2017-07-23T09:45:31Z" finished-at="2017-07-23T09:45:47Z">
+    <test name="Default test" duration-ms="17022" started-at="2017-07-28T13:00:33Z" finished-at="2017-07-28T13:00:50Z">
+      <class name="com.selenium.test.functional.DatePickerUC">
+        <test-method status="PASS" signature="launchBrowser(org.testng.ITestContext)[pri:0, instance:com.selenium.test.functional.DatePickerUC@6c3708b3]" name="launchBrowser" is-config="true" duration-ms="8630" started-at="2017-07-28T18:30:33Z" finished-at="2017-07-28T18:30:42Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[org.testng.TestRunner@2e54db99]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- launchBrowser -->
-        <test-method status="PASS" signature="HomePageTC_001()[pri:0, instance:com.selenium.test.functional.HomePageUC@3532ec19]" name="HomePageTC_001" duration-ms="1259" started-at="2017-07-23T09:45:47Z" finished-at="2017-07-23T09:45:48Z">
+        <test-method status="PASS" signature="TC_001()[pri:1, instance:com.selenium.test.functional.DatePickerUC@6c3708b3]" name="TC_001" duration-ms="33" started-at="2017-07-28T18:30:42Z" finished-at="2017-07-28T18:30:42Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- HomePageTC_001 -->
-      </class> <!-- com.selenium.test.functional.HomePageUC -->
+        </test-method> <!-- TC_001 -->
+        <test-method status="PASS" signature="getNames(java.lang.reflect.Method)[pri:0, instance:com.selenium.test.functional.DatePickerUC@6c3708b3]" name="getNames" is-config="true" duration-ms="0" started-at="2017-07-28T18:30:42Z" finished-at="2017-07-28T18:30:42Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public static void com.selenium.test.functional.DatePickerUC.TC_001() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getNames -->
+        <test-method status="PASS" signature="getStatus(org.testng.ITestResult)[pri:0, instance:com.selenium.test.functional.DatePickerUC@6c3708b3]" name="getStatus" is-config="true" duration-ms="262" started-at="2017-07-28T18:30:42Z" finished-at="2017-07-28T18:30:42Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=TC_001 status=SUCCESS method=DatePickerUC.TC_001()[pri:1, instance:com.selenium.test.functional.DatePickerUC@6c3708b3] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getStatus -->
+        <test-method status="PASS" signature="TC_002()[pri:2, instance:com.selenium.test.functional.DatePickerUC@6c3708b3]" name="TC_002" duration-ms="328" started-at="2017-07-28T18:30:42Z" finished-at="2017-07-28T18:30:43Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_002 -->
+        <test-method status="PASS" signature="getNames(java.lang.reflect.Method)[pri:0, instance:com.selenium.test.functional.DatePickerUC@6c3708b3]" name="getNames" is-config="true" duration-ms="0" started-at="2017-07-28T18:30:42Z" finished-at="2017-07-28T18:30:42Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public static void com.selenium.test.functional.DatePickerUC.TC_002() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getNames -->
+        <test-method status="PASS" signature="getStatus(org.testng.ITestResult)[pri:0, instance:com.selenium.test.functional.DatePickerUC@6c3708b3]" name="getStatus" is-config="true" duration-ms="20" started-at="2017-07-28T18:30:43Z" finished-at="2017-07-28T18:30:43Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=TC_002 status=SUCCESS method=DatePickerUC.TC_002()[pri:2, instance:com.selenium.test.functional.DatePickerUC@6c3708b3] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getStatus -->
+        <test-method status="PASS" signature="TC_003()[pri:3, instance:com.selenium.test.functional.DatePickerUC@6c3708b3]" name="TC_003" duration-ms="104" started-at="2017-07-28T18:30:43Z" finished-at="2017-07-28T18:30:43Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_003 -->
+        <test-method status="PASS" signature="getNames(java.lang.reflect.Method)[pri:0, instance:com.selenium.test.functional.DatePickerUC@6c3708b3]" name="getNames" is-config="true" duration-ms="0" started-at="2017-07-28T18:30:43Z" finished-at="2017-07-28T18:30:43Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public static void com.selenium.test.functional.DatePickerUC.TC_003() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getNames -->
+        <test-method status="PASS" signature="getStatus(org.testng.ITestResult)[pri:0, instance:com.selenium.test.functional.DatePickerUC@6c3708b3]" name="getStatus" is-config="true" duration-ms="23" started-at="2017-07-28T18:30:43Z" finished-at="2017-07-28T18:30:43Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=TC_003 status=SUCCESS method=DatePickerUC.TC_003()[pri:3, instance:com.selenium.test.functional.DatePickerUC@6c3708b3] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getStatus -->
+        <test-method status="PASS" signature="getNames(java.lang.reflect.Method)[pri:0, instance:com.selenium.test.functional.DatePickerUC@6c3708b3]" name="getNames" is-config="true" duration-ms="1" started-at="2017-07-28T18:30:43Z" finished-at="2017-07-28T18:30:43Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public static void com.selenium.test.functional.DatePickerUC.TC_004() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getNames -->
+        <test-method status="PASS" signature="TC_004()[pri:4, instance:com.selenium.test.functional.DatePickerUC@6c3708b3]" name="TC_004" duration-ms="7561" started-at="2017-07-28T18:30:43Z" finished-at="2017-07-28T18:30:50Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_004 -->
+        <test-method status="PASS" signature="getStatus(org.testng.ITestResult)[pri:0, instance:com.selenium.test.functional.DatePickerUC@6c3708b3]" name="getStatus" is-config="true" duration-ms="39" started-at="2017-07-28T18:30:50Z" finished-at="2017-07-28T18:30:50Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=TC_004 status=SUCCESS method=DatePickerUC.TC_004()[pri:4, instance:com.selenium.test.functional.DatePickerUC@6c3708b3] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getStatus -->
+      </class> <!-- com.selenium.test.functional.DatePickerUC -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

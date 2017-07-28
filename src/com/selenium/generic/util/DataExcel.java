@@ -23,7 +23,7 @@ public class DataExcel {
 		src = new File ("./DataArchive/"+fileName);
 		FileInputStream fis = new FileInputStream(src);
 		String extnsn = fileName.substring(fileName.indexOf("."));
-		System.out.println("File extnsn is :"+extnsn);
+		//System.out.println("File extnsn is :"+extnsn);
 		if(extnsn.equals(".xlsx")||extnsn.equals(".xls")){
 			wb = WorkbookFactory.create(fis);
 			}
@@ -63,7 +63,7 @@ public class DataExcel {
 	{
 		String data = null;
 		int sheetIndex = wb.getSheetIndex(sName);
-		System.out.println("sheetIndes: "+sheetIndex);
+		//System.out.println("sheetIndes: "+sheetIndex);
 		if(sheetIndex==-1){
 			return null;
 		}
@@ -80,7 +80,7 @@ public class DataExcel {
 	{
 		try{
 		int sheetIndex = wb.getSheetIndex(sName);
-		System.out.println("sheetIndex1: "+sheetIndex);
+		//System.out.println("sheetIndex1: "+sheetIndex);
 		if(sheetIndex==-1){
 			return false;
 		}
@@ -113,7 +113,7 @@ public class DataExcel {
 			return false;
 		
 		else{
-		System.out.println("Hii");
+		//System.out.println("Hii");
 		Row r = sh.getRow(rowNum);
 		Cell c = r.getCell(colNum);
 		c.setCellValue(result);
@@ -137,7 +137,7 @@ public class DataExcel {
 		String data = null;
 		try{
 		int sheetIndex = wb.getSheetIndex(sName);
-		System.out.println("sheetIndex1: "+sheetIndex);
+		//System.out.println("sheetIndex1: "+sheetIndex);
 		if(sheetIndex==-1){
 			return null;
 		}
@@ -170,7 +170,7 @@ public class DataExcel {
 			return null;
 		
 		else{
-		System.out.println("Hii");
+		//System.out.println("Hii");
 		Row r = sh.getRow(rowNum);
 		Cell c = r.getCell(colNum);
 		DataFormatter df = new DataFormatter();
