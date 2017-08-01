@@ -10,23 +10,25 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
+import org.testng.SkipException;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+import com.selenium.generic.util.BaseClass;
 import com.selenium.generic.util.DataExcel;
-import com.selenium.generic.util.ExcelMaster;
 import com.selenium.generic.util.ExcelUtility;
 import com.selenium.generic.util.HandleTestCases;
 import com.selenium.generic.util.Switch;
 import com.selenium.object.repo.HomePage;
+import com.selenium.project.spec.BaseTest;
 import com.selenium.project.spec.GetDriver;
 import com.selenium.project.spec.SignIn;
 
-@Listeners(HandleTestCases.class)
-public class DatePickerUC extends ExcelMaster {
+
+public class DatePickerUC extends BaseClass {
 	
 	public static WebDriver driver;
 	public static HomePage hp;
@@ -36,6 +38,8 @@ public class DatePickerUC extends ExcelMaster {
 	public static String className;
 	public static String testCaseName;
 	public static HandleTestCases ht = new HandleTestCases();
+	
+	
 	
 	@BeforeTest()
 	public static void launchBrowser(ITestContext context) 
@@ -48,16 +52,7 @@ public class DatePickerUC extends ExcelMaster {
 			testDataSheet = testdataexcel;
 			
 			
-			/*String className = context.getAllTestMethods()[0].getInstance().getClass().getSimpleName();
-		    System.out.println("ClassName is: "+className);
-			
-			String testCaseName = context.getAllTestMethods()[0].getMethodName();
-			System.out.println("Name of the testcase is: "+testCaseName);*/
 		
-	   /* if(!ExcelUtility.getTestRunFlag(testCaseSheet, className, testCaseName, "Execution")){
-			  throw new SkipException("Skipped testcase");
-		   }*/
-	    
 	  }
 	@BeforeMethod
 	public static void getNames(Method method)
@@ -66,6 +61,7 @@ public class DatePickerUC extends ExcelMaster {
 	    System.out.println("ClassName1 is: "+className);
 	    testCaseName = method.getName();
 	    System.out.println("TestCaseName1 is: "+testCaseName);
+	    test = extent.createTest(testCaseName);
 	   
 	    
 	 }
@@ -90,6 +86,7 @@ public class DatePickerUC extends ExcelMaster {
 	@Test(priority=1,enabled=true)
 	public static void TC_001()throws Exception
 	{
+		//test = extent.createTest("functionality2Test1");
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	    String actualTitle = driver.getTitle().trim();
 	    System.out.println("ACtual title: "+actualTitle);
@@ -100,7 +97,7 @@ public class DatePickerUC extends ExcelMaster {
 	@Test(priority=2,enabled=true)
 	public static void TC_002() throws Exception
 	{
-		
+		//test = extent.createTest("functionality2Test2");
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		Actions act = new Actions(driver);
 		act.moveToElement(hp.widget()).perform();
@@ -109,6 +106,7 @@ public class DatePickerUC extends ExcelMaster {
 	@Test(priority=3,enabled=true)
 	public static void TC_003()throws Exception
 	{
+		//test = extent.createTest("functionality2Test3");
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		log.debug("Clicked on widget tab");
 		hp.datePicker().click();
@@ -117,11 +115,15 @@ public class DatePickerUC extends ExcelMaster {
 	@Test(priority=4,enabled=true)
 	public static void TC_004()throws Exception
 	{
+		
+		//test = extent.createTest("functionality2Test3");
 		Switch.switchWindowsAndtabs(driver, 1);
 		Thread.sleep(3000);
 		SignIn.autoSignIn(driver);
 		log.debug("Auto sign completed");
 		Thread.sleep(3000);
+		throw new SkipException("Testcase skipped");
+		
 	}
 //	@Test(priority=5)
 	public static void TC_005()throws Exception

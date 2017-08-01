@@ -5,11 +5,12 @@
     <classes>
       <class name="com.selenium.test.functional.DatePickerUC">
         <methods>
+          <include name="getResult"/>
           <include name="getNames"/>
-          <include name="TC_003"/>
           <include name="getStatus"/>
-          <include name="TC_002"/>
+          <include name="tearDown"/>
           <include name="TC_004"/>
+          <include name="setUp"/>
           <include name="launchBrowser"/>
         </methods>
       </class> <!-- com.selenium.test.functional.DatePickerUC -->
