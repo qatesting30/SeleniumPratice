@@ -25,8 +25,8 @@ public class BaseClass {
 	
 	public static void init()
 	{
-		testcaseexcel = new DataExcel("TestCases.xlsx");
-		testdataexcel = new DataExcel("TestData.xlsx");
+		//testcaseexcel = new DataExcel("TestCases.xlsx");
+		//testdataexcel = new DataExcel("TestData.xlsx");
 	}
 	
 	 @BeforeSuite
@@ -45,7 +45,7 @@ public class BaseClass {
 	        htmlReporter.config().setDocumentTitle("AutomationTesting.in Demo Report");
 	        htmlReporter.config().setReportName("ExtentReport");
 	        htmlReporter.config().setTestViewChartLocation(ChartLocation.TOP);
-	        htmlReporter.config().setTheme(Theme.STANDARD);
+	        htmlReporter.config().setTheme(Theme.DARK);
 	    }
 	     
 	    @AfterMethod

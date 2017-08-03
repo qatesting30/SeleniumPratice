@@ -122,7 +122,7 @@ public class DatePickerUC extends BaseClass {
 		SignIn.autoSignIn(driver);
 		log.debug("Auto sign completed");
 		Thread.sleep(3000);
-		throw new SkipException("Testcase skipped");
+		
 		
 	}
 //	@Test(priority=5)

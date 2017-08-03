@@ -3,6 +3,8 @@ package com.selenium.generic.util;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.DataFormatter;
@@ -13,11 +15,11 @@ import org.apache.poi.ss.usermodel.WorkbookFactory;
 
 public class DataExcel {
 	
-	 File src;
-     Workbook wb;
-	 Sheet sh;
+	public static  File src;
+	public static Workbook wb;
+	public static Sheet sh;
 	
-	public DataExcel(String fileName)
+	public static void dataExcel(String fileName)
 	{
 		try{
 		src = new File ("./DataArchive/"+fileName);
@@ -34,7 +36,7 @@ public class DataExcel {
 		}
 	}
 	
-	public  int retrievenoOfRows(String sName)
+	public static  int retrievenoOfRows(String sName)
 	{
 		int sheetIndex = wb.getSheetIndex(sName);
 		if(sheetIndex==-1)
@@ -46,7 +48,7 @@ public class DataExcel {
 		}
 	}
 	
-	public  int retrieveNoOfColoumns(String sName)
+	public static  int retrieveNoOfColoumns(String sName)
 	{
 		int sheetIndex = wb.getSheetIndex(sName);
 		if(sheetIndex==-1){
@@ -186,10 +188,69 @@ public class DataExcel {
 		}
 		return data;
 	}
-	/*public static void main(String[] args) {
-	   dataExcel("testData.xlsx");
+	public static ArrayList<String> extractExcelContentByColumnIndex(String sName,String columnName)
+	{
+		System.out.println("hii");
+		ArrayList<String> columndata = null;
+		try{
+			int sheetIndex = wb.getSheetIndex(sName);
+			//System.out.println("sheetIndex1: "+sheetIndex);
+			if(sheetIndex==-1){
+				System.out.println("Invalid sheet");
+				return null;
+			}
+			
+			
+			int noOfRows = retrievenoOfRows(sName);
+			int noOfColmns = retrieveNoOfColoumns(sName);
+			
+			int columnIndex = -1;
+			
+			
+			Row dataCol = sh.getRow(0);
+			for(int i=0;i<noOfColmns;i++){
+				if(dataCol.getCell(i).getStringCellValue().equals(columnName.trim())){
+			    columnIndex = i;
+				System.out.println("Column number is: "+columnIndex);
+				break;
+				}
+			}
+		   
+         Iterator<Row> rowIterator = sh.iterator();
+            columndata = new ArrayList<String>();
+
+            while (rowIterator.hasNext()) {
+                Row row = rowIterator.next();
+                Iterator<Cell> cellIterator = row.cellIterator();
+                while (cellIterator.hasNext()) {
+                    Cell cell = cellIterator.next();
+
+                    if(row.getRowNum() > 0){ //To filter column headings
+                        if(cell.getColumnIndex() == columnIndex){// To match column index
+                        	if(cell.getStringCellValue().equalsIgnoreCase("Skipped")){
+                        		row.getRowNum();
+                        		System.out.println(" Skipped Row number is: "+row.getRowNum());
+                        		columndata.add(row.getCell(0).getStringCellValue());
+                        	}
+                                   break;
+                            }
+                        }
+                    }
+                }
+            
+        System.out.println("values are: "+columndata);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return columndata;
+       }
+	
+	public static void main(String[] args) {
+	   dataExcel("testCases.xlsx");
 	  // retrievenoOfRows("LoginPage");
 	 //  retrieveNoOfColoumns("Loginpage");
-	   writeResult("Credentials", "test", "PASSWORD", "PASS");
-	}*/
+	   //writeResult("Credentials", "test", "PASSWORD", "PASS");
+	   
+	   extractExcelContentByColumnIndex("DatePickerUC", "Status");
+	}
 }
