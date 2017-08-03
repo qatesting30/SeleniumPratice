@@ -188,7 +188,7 @@ public class DataExcel {
 		}
 		return data;
 	}
-	public static ArrayList<String> extractExcelContentByColumnIndex(String sName,String columnName)
+	public static ArrayList<String> extractExcelContentByColumnName(String sName,String columnName)
 	{
 		System.out.println("hii");
 		ArrayList<String> columndata = null;
@@ -251,6 +251,6 @@ public class DataExcel {
 	 //  retrieveNoOfColoumns("Loginpage");
 	   //writeResult("Credentials", "test", "PASSWORD", "PASS");
 	   
-	   extractExcelContentByColumnIndex("DatePickerUC", "Status");
+	   extractExcelContentByColumnName("DatePickerUC", "Status");
 	}
 }
