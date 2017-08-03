@@ -19,7 +19,7 @@ public class DataExcel {
 	public static Workbook wb;
 	public static Sheet sh;
 	
-	public static void dataExcel(String fileName)
+	public DataExcel(String fileName)
 	{
 		try{
 		src = new File ("./DataArchive/"+fileName);
@@ -36,7 +36,7 @@ public class DataExcel {
 		}
 	}
 	
-	public static  int retrievenoOfRows(String sName)
+	public   int retrievenoOfRows(String sName)
 	{
 		int sheetIndex = wb.getSheetIndex(sName);
 		if(sheetIndex==-1)
@@ -48,7 +48,7 @@ public class DataExcel {
 		}
 	}
 	
-	public static  int retrieveNoOfColoumns(String sName)
+	public   int retrieveNoOfColoumns(String sName)
 	{
 		int sheetIndex = wb.getSheetIndex(sName);
 		if(sheetIndex==-1){
@@ -61,7 +61,7 @@ public class DataExcel {
 			}
 		}
 	
-	public   String retrieveTestData(String sName,int rNum,int cNum)
+	public String retrieveTestData(String sName,int rNum,int cNum)
 	{
 		String data = null;
 		int sheetIndex = wb.getSheetIndex(sName);
@@ -78,7 +78,7 @@ public class DataExcel {
 		}
 	}
 	
-	public   boolean writeResult(String sName,String rName,String cName,String result )
+	public boolean writeResult(String sName,String rName,String cName,String result )
 	{
 		try{
 		int sheetIndex = wb.getSheetIndex(sName);
@@ -188,7 +188,7 @@ public class DataExcel {
 		}
 		return data;
 	}
-	public static ArrayList<String> extractExcelContentByColumnName(String sName,String columnName)
+	public  ArrayList<String> extractExcelContentByColumnName(String sName,String columnName)
 	{
 		System.out.println("hii");
 		ArrayList<String> columndata = null;
@@ -245,12 +245,12 @@ public class DataExcel {
         return columndata;
        }
 	
-	public static void main(String[] args) {
-	   dataExcel("testCases.xlsx");
-	  // retrievenoOfRows("LoginPage");
-	 //  retrieveNoOfColoumns("Loginpage");
-	   //writeResult("Credentials", "test", "PASSWORD", "PASS");
-	   
-	   extractExcelContentByColumnName("DatePickerUC", "Status");
-	}
+//	public static void main(String[] args) {
+//	   dataExcel("testCases.xlsx");
+//	  // retrievenoOfRows("LoginPage");
+//	 //  retrieveNoOfColoumns("Loginpage");
+//	   //writeResult("Credentials", "test", "PASSWORD", "PASS");
+//	   
+//	   extractExcelContentByColumnName("DatePickerUC", "Status");
+//	}
 }

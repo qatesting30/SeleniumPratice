@@ -1,5 +1,7 @@
 package com.selenium.generic.util;
 
+import java.util.ArrayList;
+
 public class ExcelUtility {
 	
 	public static boolean writeStatus(DataExcel dx,String sheetName,String rowName,String colName,String status){
@@ -20,7 +22,10 @@ public class ExcelUtility {
 		return flag;
 	}
 	
-	//public static Arraylist<String>getExecutionValue()
+	public static ArrayList<String>matchtestCaseName(DataExcel dx,String sheetName,String rowName,String colName){
+		
+		return dx.extractExcelContentByColumnName(sheetName, colName);
+	}
 	
 
 }
