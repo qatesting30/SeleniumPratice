@@ -37,8 +37,6 @@ public class DatePickerUC extends BaseClass {
 	public static DataExcel testDataSheet;
 	public static String className;
 	public static String testCaseName;
-	public static HandleTestCases ht = new HandleTestCases();
-	
 	
 	
 	@BeforeTest()
@@ -104,7 +102,7 @@ public class DatePickerUC extends BaseClass {
 		
 		
 	}
-//	@Test(priority=5)
+	@Test(priority=5)
 	public static void TC_005()throws Exception
 	{
 		hp.widget().click();

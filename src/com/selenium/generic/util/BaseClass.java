@@ -2,8 +2,11 @@ package com.selenium.generic.util;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+
 import org.testng.IAnnotationTransformer;
 import org.testng.ITestContext;
+import org.testng.ITestListener;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
@@ -19,7 +22,7 @@ import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.ChartLocation;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 
-public class BaseClass implements IAnnotationTransformer {
+public class BaseClass implements IAnnotationTransformer,ITestListener {
 	
 	public static DataExcel testcaseexcel = null;
 	public static DataExcel testdataexcel = null;
@@ -77,7 +80,7 @@ public class BaseClass implements IAnnotationTransformer {
 	        htmlReporter.config().setTheme(Theme.DARK);
 	        
 	        
-	        String className = context.getAllTestMethods()[0].getInstance().getClass().getName();
+	       // String className = context.getAllTestMethods()[0].getInstance().getClass().getName();
 	    }
 	       
 	        @BeforeMethod
@@ -97,32 +100,37 @@ public class BaseClass implements IAnnotationTransformer {
 	    {
 	    	
 	    	String testclassName = result.getTestClass().getRealClass().getSimpleName();
+	    	String testCaseName = result.getName();
 	    	
-//	    	 Class<?> c = Class.forName(result.getTestClass().getRealClass().getName());
-//		        
-//		        Method[] methods = c.getDeclaredMethods();
-//		        
-//		        for(Method m : methods)
-//		          {
-//		        	  System.out.println("Declared methods are: "+m.getName());
-//		        	  if(m.getName().equals("TC_002"))
-//		        	  {
-//		        		 // result.setStatus(ITestResult.SKIP);
-//		        	  }
-//		          }
+	    	 Class<?> c = Class.forName(result.getTestClass().getRealClass().getName());
+	        
+	        Method[] methods = c.getDeclaredMethods();
+	        
+	        ArrayList<String>skippingTestCaseName = ExcelUtility.matchtestCaseName(testcaseexcel, testclassName, "Status", "skipped");
+	        System.out.println("Skipped TC_Name: "+skippingTestCaseName);
+	        for(Method m : methods)		          {
+	        	  System.out.println("Declared methods are: "+m.getName());
+		        	  if(skippingTestCaseName.contains(m.getName())) {
+		        		  System.out.println("values matched are: "+m.getName());
+	        		  result.setStatus(ITestResult.SKIP);
+		        	  }
+	        	  }
+	          
 	    	
 	        if(result.getStatus() == ITestResult.FAILURE)
 	        {
-	            test.log(Status.FAIL, MarkupHelper.createLabel(result.getName()+" Test case FAILED due to below issues:", ExtentColor.RED));
+	        	ExcelUtility.writeStatus(testcaseexcel, testclassName, testCaseName, "Status", "FAIL");
+	            test.log(Status.FAIL, MarkupHelper.createLabel(testCaseName+" Test case FAILED due to below issues:", ExtentColor.RED));
 	          //  test.fail(result.getThrowable());
 	        }
 	        else if(result.getStatus() == ITestResult.SUCCESS)
 	        {
-	            test.log(Status.PASS, MarkupHelper.createLabel(result.getName()+" Test Case PASSED", ExtentColor.GREEN));
+	        	ExcelUtility.writeStatus(testcaseexcel, testclassName, testCaseName, "Status", "PASS");
+	          //  test.log(Status.PASS, MarkupHelper.createLabel(testCaseName+" Test Case PASSED",ExtentColor.GREEN));
 	        }
 	        else
 	        {
-	            test.log(Status.SKIP, MarkupHelper.createLabel(result.getName()+" Test Case SKIPPED", ExtentColor.ORANGE));
+	            test.log(Status.SKIP, MarkupHelper.createLabel(testCaseName+" Test Case SKIPPED", ExtentColor.ORANGE));
 	            test.skip(result.getThrowable());
 	        }
 	    }
@@ -132,6 +140,42 @@ public class BaseClass implements IAnnotationTransformer {
 	    {
 	        extent.flush();
 	    }
+
+		public void onTestStart(ITestResult result) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		public void onTestSuccess(ITestResult result) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		public void onTestFailure(ITestResult result) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		public void onTestSkipped(ITestResult result) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		public void onStart(ITestContext context) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		public void onFinish(ITestContext context) {
+			
+			
+			
+		}
 
 	
 	
