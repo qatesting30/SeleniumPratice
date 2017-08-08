@@ -22,7 +22,7 @@ import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.ChartLocation;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 
-public class BaseClass implements IAnnotationTransformer,ITestListener {
+public class BaseClass implements IAnnotationTransformer{
 	
 	public static DataExcel testcaseexcel = null;
 	public static DataExcel testdataexcel = null;
@@ -130,57 +130,41 @@ public class BaseClass implements IAnnotationTransformer,ITestListener {
 	        }
 	        else
 	        {
-	            test.log(Status.SKIP, MarkupHelper.createLabel(testCaseName+" Test Case SKIPPED", ExtentColor.ORANGE));
-	            test.skip(result.getThrowable());
+	            /*test.log(Status.SKIP, MarkupHelper.createLabel(testCaseName+" Test Case SKIPPED", ExtentColor.ORANGE));
+	            test.skip(result.getThrowable());*/
 	        }
 	    }
-	     
 	    @AfterSuite
-	    public static void tearDown()
+	    public static void checkStatus(ITestResult result)
 	    {
-	        extent.flush();
+	    	String testclassName = result.getTestClass().getRealClass().getSimpleName();
+	    	String testCaseName = result.getName();
+	    	
+	    	if(ExcelUtility.getTestRunFlag(testcaseexcel, testclassName, testCaseName, "Status", "PASS"))
+	    	{
+	    		test.log(Status.PASS, MarkupHelper.createLabel(testCaseName+" Test Case PASSED",ExtentColor.GREEN));
+	    	}
+	    	else if(ExcelUtility.getTestRunFlag(testcaseexcel, testclassName, testCaseName, "Status", "FAIL"))
+	    	    	{
+	    	    		test.log(Status.PASS, MarkupHelper.createLabel(testCaseName+" Test Case PASSED",ExtentColor.RED));
+	    	    	}
+	    	else if(ExcelUtility.getTestRunFlag(testcaseexcel, testclassName, testCaseName, "Status", "skipped"))
+	    	{
+	    		test.log(Status.PASS, MarkupHelper.createLabel(testCaseName+" Test Case PASSED",ExtentColor.YELLOW));
+	    	}
+	    	
 	    }
-
-		public void onTestStart(ITestResult result) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		public void onTestSuccess(ITestResult result) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		public void onTestFailure(ITestResult result) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		public void onTestSkipped(ITestResult result) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		public void onStart(ITestContext context) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		public void onFinish(ITestContext context) {
-			
-			
-			
-		}
-
-	
-	
-	
-	
-	
-
 }
+	  
+			
+			
+			
+			
+		
+
+	
+	
+	
+	
+	
+
