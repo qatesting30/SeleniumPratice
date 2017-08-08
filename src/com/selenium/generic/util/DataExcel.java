@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.DataFormatter;
@@ -25,7 +26,7 @@ public class DataExcel {
 		src = new File ("./DataArchive/"+fileName);
 		FileInputStream fis = new FileInputStream(src);
 		String extnsn = fileName.substring(fileName.indexOf("."));
-		//System.out.println("File extnsn is :"+extnsn);
+		System.out.println("File name and extnsn is :"+fileName+" "+extnsn);
 		if(extnsn.equals(".xlsx")||extnsn.equals(".xls")){
 			wb = WorkbookFactory.create(fis);
 			}
@@ -137,11 +138,22 @@ public class DataExcel {
 	public String getFlaq(String sName,String rName,String cName)
 	{
 		String data = null;
+		List<String> sheetNames = null;
 		try{
+			
+			sheetNames = new ArrayList<String>();
+			for (int i=0; i<wb.getNumberOfSheets(); i++) {
+			    sheetNames.add( wb.getSheetName(i) );
+			}
+		  System.out.println("extracted sheetName: "+sheetNames);
+			
+			
+			
 		int sheetIndex = wb.getSheetIndex(sName);
-		//System.out.println("sheetIndex1: "+sheetIndex);
+		System.out.println("sheetname1: "+sName);
 		if(sheetIndex==-1){
-			return null;
+			System.out.println("Invalid sheet Number: "+sheetIndex);
+			//return null;
 		}
 		
 		int noOfRows = retrievenoOfRows(sName);
@@ -158,8 +170,10 @@ public class DataExcel {
 			break;
 			}
 		}
-		if(colNum==-1)
-			return null;
+		if(colNum==-1){
+			System.out.println("Invalid Column Number");
+			//return null;
+		}
 		for(int j=0;j<noOfRows;j++){
 			Row dataRow = sh.getRow(j);
 			if(dataRow.getCell(0).getStringCellValue().equals(rName.trim())){
@@ -168,8 +182,11 @@ public class DataExcel {
 				break;
 			}
 		}
-		if(rowNum==-1)
-			return null;
+		if(rowNum==-1){
+			System.out.println("Invalid Column Number");
+			//return null;
+		}
+			
 		
 		else{
 		//System.out.println("Hii");
@@ -188,7 +205,7 @@ public class DataExcel {
 		}
 		return data;
 	}
-	public  ArrayList<String> extractExcelContentByColumnName(String sName,String columnName)
+	public  ArrayList<String> extractExcelContentByColumnName(String sName,String columnName,String data)
 	{
 		System.out.println("hii");
 		ArrayList<String> columndata = null;
@@ -227,7 +244,7 @@ public class DataExcel {
 
                     if(row.getRowNum() > 0){ //To filter column headings
                         if(cell.getColumnIndex() == columnIndex){// To match column index
-                        	if(cell.getStringCellValue().equalsIgnoreCase("Skipped")){
+                        	if(cell.getStringCellValue().equalsIgnoreCase(data)){
                         		row.getRowNum();
                         		System.out.println(" Skipped Row number is: "+row.getRowNum());
                         		columndata.add(row.getCell(0).getStringCellValue());

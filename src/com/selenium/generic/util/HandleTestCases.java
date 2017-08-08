@@ -17,9 +17,9 @@ public class HandleTestCases implements IAnnotationTransformer
 		public void transform(ITestAnnotation annotation, Class testClass, Constructor testConstructor,
 				Method testMethod) {
 	    	
-	    	if(!ExcelUtility.getTestRunFlag(testCaseSheet, className, testCaseName, "Execution")){
+	    	/*if(!ExcelUtility.getTestRunFlag(testCaseSheet, className, testCaseName, "Execution")){
 	    		annotation.setEnabled(false);
-	    	}
+	    	}*/
 	    	}
 	    }
 

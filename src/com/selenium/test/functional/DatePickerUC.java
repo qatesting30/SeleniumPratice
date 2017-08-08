@@ -47,35 +47,14 @@ public class DatePickerUC extends BaseClass {
 		
 		    driver = GetDriver.getDriverInstance();
 			hp = new HomePage(driver);
-			init();
-			testCaseSheet = testcaseexcel;
-			testDataSheet = testdataexcel;
+			//init();
+			/*testCaseSheet = testcaseexcel;
+			testDataSheet = testdataexcel;*/
 			
 			
 		
 	  }
-	@BeforeMethod
-	public static void getNames(Method method)
-	{
-		className = method.getDeclaringClass().getSimpleName();
-	    System.out.println("ClassName1 is: "+className);
-	    testCaseName = method.getName();
-	    System.out.println("TestCaseName1 is: "+testCaseName);
-	    test = extent.createTest(testCaseName);
-	   
-	    
-	 }
 	
-	/*@SuppressWarnings("rawtypes")
-	public void transform(ITestAnnotation annotation, Class testClass,
-			Constructor testConstructor, Method testMethod) {
-		
-		if(!ExcelUtility.getTestRunFlag(testCaseSheet, className, testCaseName, "Execution")){
-			  annotation.setEnabled(false);
-		}
-		
-	}*/
-
 	    
 	//@Test
 	public static void trialsRun()
@@ -135,21 +114,6 @@ public class DatePickerUC extends BaseClass {
 		log.debug("Navigated to date picker page");
 	}
 	
-	@AfterMethod
-	public static void getStatus(ITestResult result)
-	{
-		String className = result.getTestClass().getRealClass().getSimpleName();
-		String testCaseName = result.getMethod().getMethodName();
-		//System.out.println("ClasssName is: "+className);
-		//System.out.println("TestCasename is: "+testCaseName);
+	
 		
-		if(result.getStatus()==ITestResult.SUCCESS){
-			ExcelUtility.writeStatus(testCaseSheet, className, testCaseName, "Status", "PASS");
-		}
-			
-			else if (result.getStatus()==ITestResult.FAILURE){
-				ExcelUtility.writeStatus(testCaseSheet, className, testCaseName, "Status", "FAIL");
-			}
-			
-		
-	}}
+	}
