@@ -12,6 +12,7 @@ import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.SkipException;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Listeners;
@@ -102,7 +103,7 @@ public class DatePickerUC extends BaseClass {
 		
 		
 	}
-	@Test(priority=5)
+	@Test(priority=5,enabled=true)
 	public static void TC_005()throws Exception
 	{
 		hp.widget().click();
@@ -112,6 +113,11 @@ public class DatePickerUC extends BaseClass {
 		log.debug("Navigated to date picker page");
 	}
 	
-	
+	/*@AfterTest
+	public static WebDriver tearFown()
+	{
+		//extent.flush();
+		return driver;
+	}*/
 		
 	}

@@ -10,6 +10,7 @@ import org.testng.ITestListener;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.ITestAnnotation;
@@ -21,6 +22,7 @@ import com.aventstack.extentreports.markuputils.MarkupHelper;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.ChartLocation;
 import com.aventstack.extentreports.reporter.configuration.Theme;
+import com.google.gson.LongSerializationPolicy;
 
 public class BaseClass implements IAnnotationTransformer{
 	
@@ -52,7 +54,7 @@ public class BaseClass implements IAnnotationTransformer{
 		System.out.println("2: "+testcaseName);
 		
 		
-		if(!ExcelUtility.getTestRunFlag(testcaseexcel, className, testcaseName, "Execution", "Y"))
+		if(ExcelUtility.getTestRunFlag(testcaseexcel, className, testcaseName, "Execution", "N"))
     	{
     	   annotation.setEnabled(false);
     	   ExcelUtility.writeStatus(testcaseexcel, className, testcaseName, "Status", "skipped");
@@ -64,7 +66,10 @@ public class BaseClass implements IAnnotationTransformer{
 	 @BeforeSuite
 	    public static void setUp(ITestContext context) throws Exception
 	    {
-	        htmlReporter = new ExtentHtmlReporter(System.getProperty("user.dir") +"/test-output/Extentreport.html");
+		 
+		 System.out.println("beforeSuite Class");
+	        htmlReporter = new ExtentHtmlReporter(System.getProperty("user.dir") +"/test-output/checkExtentReport.html");
+		    //htmlReporter = new ExtentHtmlReporter("./test-output/newExtentreport.html");
 	        extent = new ExtentReports();
 	        extent.attachReporter(htmlReporter);
 	         
@@ -77,7 +82,7 @@ public class BaseClass implements IAnnotationTransformer{
 	        htmlReporter.config().setDocumentTitle("AutomationTesting.in Demo Report");
 	        htmlReporter.config().setReportName("ExtentReport");
 	        htmlReporter.config().setTestViewChartLocation(ChartLocation.TOP);
-	        htmlReporter.config().setTheme(Theme.DARK);
+	        htmlReporter.config().setTheme(Theme.STANDARD);
 	        
 	        
 	       // String className = context.getAllTestMethods()[0].getInstance().getClass().getName();
@@ -86,13 +91,13 @@ public class BaseClass implements IAnnotationTransformer{
 	        @BeforeMethod
 	        public static void getStatus(Method method )
 	        {
+	        	String testcaseName = method.getName();
+	        	test = extent.createTest(testcaseName);
 	        	/*String className = method.getClass().getSimpleName();
 	        	String testcaseName = method.getName();
 	        	*/
 	        	
 	       // String className = context.getAllTestMethods()[0].getInstance().getClass().getName();
-	       // Class<?> c = Class.forName(className);
-	        
 	      }
 	     
 	    @AfterMethod
@@ -101,7 +106,7 @@ public class BaseClass implements IAnnotationTransformer{
 	    	
 	    	String testclassName = result.getTestClass().getRealClass().getSimpleName();
 	    	String testCaseName = result.getName();
-	    	
+	    	System.out.println("Dmethod names: "+testCaseName);
 	    	 Class<?> c = Class.forName(result.getTestClass().getRealClass().getName());
 	        
 	        Method[] methods = c.getDeclaredMethods();
@@ -120,13 +125,14 @@ public class BaseClass implements IAnnotationTransformer{
 	        if(result.getStatus() == ITestResult.FAILURE)
 	        {
 	        	ExcelUtility.writeStatus(testcaseexcel, testclassName, testCaseName, "Status", "FAIL");
-	            test.log(Status.FAIL, MarkupHelper.createLabel(testCaseName+" Test case FAILED due to below issues:", ExtentColor.RED));
-	          //  test.fail(result.getThrowable());
+	           // test.log(Status.FAIL, MarkupHelper.createLabel(testCaseName+" Test case FAILED due to below issues:", ExtentColor.RED));
+	           // test.fail(result.getThrowable());
+	            
 	        }
 	        else if(result.getStatus() == ITestResult.SUCCESS)
 	        {
 	        	ExcelUtility.writeStatus(testcaseexcel, testclassName, testCaseName, "Status", "PASS");
-	          //  test.log(Status.PASS, MarkupHelper.createLabel(testCaseName+" Test Case PASSED",ExtentColor.GREEN));
+	         //  test.log(Status.PASS, MarkupHelper.createLabel(testCaseName+" Test Case PASSED",ExtentColor.GREEN));
 	        }
 	        else
 	        {
@@ -134,7 +140,7 @@ public class BaseClass implements IAnnotationTransformer{
 	            test.skip(result.getThrowable());*/
 	        }
 	    }
-	    @AfterSuite
+	    @AfterTest
 	    public static void checkStatus(ITestResult result)
 	    {
 	    	String testclassName = result.getTestClass().getRealClass().getSimpleName();
@@ -152,6 +158,8 @@ public class BaseClass implements IAnnotationTransformer{
 	    	{
 	    		test.log(Status.PASS, MarkupHelper.createLabel(testCaseName+" Test Case PASSED",ExtentColor.YELLOW));
 	    	}
+	    	
+	    	extent.flush();
 	    	
 	    }
 }
