@@ -8,6 +8,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -205,13 +206,14 @@ public class DataExcel {
 		}
 		return data;
 	}
+	@SuppressWarnings("deprecation")
 	public  ArrayList<String> extractExcelContentByColumnName(String sName,String columnName,String data)
 	{
 		System.out.println("hii");
 		ArrayList<String> columndata = null;
 		try{
 			int sheetIndex = wb.getSheetIndex(sName);
-			//System.out.println("sheetIndex1: "+sheetIndex);
+			System.out.println("sheetnameAgain is: "+sName);
 			if(sheetIndex==-1){
 				System.out.println("Invalid sheet");
 				return null;
@@ -244,7 +246,20 @@ public class DataExcel {
 
                     if(row.getRowNum() > 0){ //To filter column headings
                         if(cell.getColumnIndex() == columnIndex){// To match column index
-                        	if(cell.getStringCellValue().equalsIgnoreCase(data)){
+                        	if(data.equalsIgnoreCase("ALL")){
+                        		row.getRowNum();
+                        		System.out.println(" Row numbers are: "+row.getRowNum());
+                        		for (int cellNum = row.getFirstCellNum(); cellNum < row.getLastCellNum(); cellNum++) {
+                        	        cell = row.getCell(cellNum);
+                        	        if (cell != null ) {
+                        	        	columndata.add(row.getCell(0).getStringCellValue());
+                        	        }
+                        	    }
+                        		
+                        		
+                        		}
+                        	}
+                        	else if(cell.getStringCellValue().equalsIgnoreCase(data)){
                         		row.getRowNum();
                         		System.out.println(" Skipped Row number is: "+row.getRowNum());
                         		columndata.add(row.getCell(0).getStringCellValue());
@@ -253,7 +268,7 @@ public class DataExcel {
                             }
                         }
                     }
-                }
+                
             
         System.out.println("values are: "+columndata);
         } catch (Exception e) {

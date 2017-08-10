@@ -28,7 +28,7 @@ public class BaseClass implements IAnnotationTransformer{
 	
 	public static DataExcel testcaseexcel = null;
 	public static DataExcel testdataexcel = null;
-	
+	public static String className = null;
 	public static ExtentHtmlReporter htmlReporter;
     public static ExtentReports extent;
     public static ExtentTest test;
@@ -85,7 +85,7 @@ public class BaseClass implements IAnnotationTransformer{
 	        htmlReporter.config().setTheme(Theme.STANDARD);
 	        
 	        
-	       // String className = context.getAllTestMethods()[0].getInstance().getClass().getName();
+	       className = context.getAllTestMethods()[0].getInstance().getClass().getSimpleName();
 	    }
 	       
 	        @BeforeMethod
@@ -107,7 +107,7 @@ public class BaseClass implements IAnnotationTransformer{
 	    	String testclassName = result.getTestClass().getRealClass().getSimpleName();
 	    	String testCaseName = result.getName();
 	    	System.out.println("Dmethod names: "+testCaseName);
-	    	 Class<?> c = Class.forName(result.getTestClass().getRealClass().getName());
+	    	/* Class<?> c = Class.forName(result.getTestClass().getRealClass().getName());
 	        
 	        Method[] methods = c.getDeclaredMethods();
 	        
@@ -119,46 +119,49 @@ public class BaseClass implements IAnnotationTransformer{
 		        		  System.out.println("values matched are: "+m.getName());
 	        		  result.setStatus(ITestResult.SKIP);
 		        	  }
-	        	  }
+	        	  }*/
 	          
-	    	
-	        if(result.getStatus() == ITestResult.FAILURE)
+	    	if(result.getStatus() == ITestResult.FAILURE)
 	        {
 	        	ExcelUtility.writeStatus(testcaseexcel, testclassName, testCaseName, "Status", "FAIL");
-	           // test.log(Status.FAIL, MarkupHelper.createLabel(testCaseName+" Test case FAILED due to below issues:", ExtentColor.RED));
-	           // test.fail(result.getThrowable());
-	            
+	          
 	        }
 	        else if(result.getStatus() == ITestResult.SUCCESS)
 	        {
 	        	ExcelUtility.writeStatus(testcaseexcel, testclassName, testCaseName, "Status", "PASS");
-	         //  test.log(Status.PASS, MarkupHelper.createLabel(testCaseName+" Test Case PASSED",ExtentColor.GREEN));
+	        
 	        }
-	        else
+	        else if (result.getStatus()==ITestResult.SKIP)
 	        {
-	            /*test.log(Status.SKIP, MarkupHelper.createLabel(testCaseName+" Test Case SKIPPED", ExtentColor.ORANGE));
-	            test.skip(result.getThrowable());*/
+	        	ExcelUtility.writeStatus(testcaseexcel, testclassName, testCaseName, "Status", "SKIPPED");
 	        }
+	        
+	       
+	    	
+	        
 	    }
 	    @AfterTest
-	    public static void checkStatus(ITestResult result)
+	    public static void checkStatus()
 	    {
-	    	String testclassName = result.getTestClass().getRealClass().getSimpleName();
-	    	String testCaseName = result.getName();
+	    	 
+	    	ArrayList<String>testcases = ExcelUtility.matchtestCaseName(testcaseexcel, className, "Status", "ALL");
+	    	System.out.println("testcase names are: "+testcases);
 	    	
-	    	if(ExcelUtility.getTestRunFlag(testcaseexcel, testclassName, testCaseName, "Status", "PASS"))
-	    	{
-	    		test.log(Status.PASS, MarkupHelper.createLabel(testCaseName+" Test Case PASSED",ExtentColor.GREEN));
-	    	}
-	    	else if(ExcelUtility.getTestRunFlag(testcaseexcel, testclassName, testCaseName, "Status", "FAIL"))
-	    	    	{
-	    	    		test.log(Status.PASS, MarkupHelper.createLabel(testCaseName+" Test Case PASSED",ExtentColor.RED));
-	    	    	}
-	    	else if(ExcelUtility.getTestRunFlag(testcaseexcel, testclassName, testCaseName, "Status", "skipped"))
-	    	{
-	    		test.log(Status.PASS, MarkupHelper.createLabel(testCaseName+" Test Case PASSED",ExtentColor.YELLOW));
-	    	}
 	    	
+	    	
+	    	
+	    	/*if(ExcelUtility.getTestRunFlag(testcaseexcel, testclassName, testCaseName, "Status", "PASS"))
+		    	{
+		    		test.log(Status.PASS, MarkupHelper.createLabel(testCaseName+" Test Case PASSED",ExtentColor.GREEN));
+		    	}
+		    	else if(ExcelUtility.getTestRunFlag(testcaseexcel, testclassName, testCaseName, "Status", "FAIL"))
+		    	    	{
+		    	    		test.log(Status.PASS, MarkupHelper.createLabel(testCaseName+" Test Case PASSED",ExtentColor.RED));
+		    	    	}
+		    	else if(ExcelUtility.getTestRunFlag(testcaseexcel, testclassName, testCaseName, "Status", "skipped"))
+		    	{
+		    		test.log(Status.PASS, MarkupHelper.createLabel(testCaseName+" Test Case PASSED",ExtentColor.YELLOW));
+		    	}*/
 	    	extent.flush();
 	    	
 	    }
