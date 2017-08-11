@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.DataFormatter;
@@ -225,7 +226,8 @@ public class DataExcel {
 			
 			int columnIndex = -1;
 			
-			
+			/*int sh1 = sh.getPhysicalNumberOfRows();
+			System.out.println("Physical now of defined rows: "+sh1);*/
 			Row dataCol = sh.getRow(0);
 			for(int i=0;i<noOfColmns;i++){
 				if(dataCol.getCell(i).getStringCellValue().equals(columnName.trim())){
@@ -245,17 +247,22 @@ public class DataExcel {
                     Cell cell = cellIterator.next();
 
                     if(row.getRowNum() > 0){ //To filter column headings
+                    	System.out.println("rowNum is: "+row.getRowNum());
+                    	//System.out.println("cell column index: "+cell.getColumnIndex());
                         if(cell.getColumnIndex() == columnIndex){// To match column index
                         	if(data.equalsIgnoreCase("ALL")){
                         		row.getRowNum();
                         		System.out.println(" Row numbers are: "+row.getRowNum());
-                        		for (int cellNum = row.getFirstCellNum(); cellNum < row.getLastCellNum(); cellNum++) {
-                        	        cell = row.getCell(cellNum);
-                        	        if (cell != null ) {
+                        		//columndata.add(row.getCell(0).getStringCellValue());
+                        		
+                        		
+                               for (int cellNum = row.getFirstCellNum(); cellNum <= row.getFirstCellNum(); cellNum++) {
+                        	        cell = row.getCell(0);
+                        	        if(cell != null && cell.getCellTypeEnum() != CellType.BLANK && StringUtils.isNotBlank(cell.toString())){
                         	        	columndata.add(row.getCell(0).getStringCellValue());
                         	        }
                         	    }
-                        		
+                        	}
                         		
                         		}
                         	}
@@ -264,10 +271,10 @@ public class DataExcel {
                         		System.out.println(" Skipped Row number is: "+row.getRowNum());
                         		columndata.add(row.getCell(0).getStringCellValue());
                         	}
-                                   break;
+                                 
                             }
                         }
-                    }
+                    
                 
             
         System.out.println("values are: "+columndata);
