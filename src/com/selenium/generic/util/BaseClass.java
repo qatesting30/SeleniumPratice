@@ -161,13 +161,13 @@ public class BaseClass implements IAnnotationTransformer{
 		    	else if(ExcelUtility.getTestRunFlag(testcaseexcel, className, testcaseName, "Status", "FAIL"))
 		    	{
 		    		System.out.println("Execution status of "+testcaseName+" is: FAIL");
-		    		test.log(Status.FAIL, MarkupHelper.createLabel(testcaseName+" Test Case PASSED",ExtentColor.RED));
+		    		test.log(Status.FAIL, MarkupHelper.createLabel(testcaseName+" Test Case FAILED",ExtentColor.RED));
 		    	}
 		    	    	
 		    	else if(ExcelUtility.getTestRunFlag(testcaseexcel, className, testcaseName, "Status", "SKIPPED"))
 		    	{
 		    		System.out.println("Execution status of "+testcaseName+" is: SKIP");
-		    		test.log(Status.SKIP, MarkupHelper.createLabel(testcaseName+" Test Case PASSED",ExtentColor.YELLOW));
+		    		test.log(Status.SKIP, MarkupHelper.createLabel(testcaseName+" Test Case SKIPPED",ExtentColor.YELLOW));
 		    	}
 	    	
 	    }

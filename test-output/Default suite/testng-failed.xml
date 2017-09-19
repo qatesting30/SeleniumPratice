@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
-  <listeners>
-    <listener class-name="com.selenium.generic.util.BaseClass"/>
-  </listeners>
   <test name="Default test(failed)">
     <classes>
       <class name="com.selenium.test.functional.DatePickerUC">
@@ -11,8 +8,10 @@
           <include name="getResult"/>
           <include name="TC_003"/>
           <include name="getStatus"/>
-          <include name="tearDown"/>
+          <include name="TC_002"/>
+          <include name="checkStatus"/>
           <include name="TC_004"/>
+          <include name="TC_005"/>
           <include name="setUp"/>
           <include name="launchBrowser"/>
         </methods>
