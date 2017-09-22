@@ -2,34 +2,34 @@
 <testng-results skipped="0" failed="0" ignored="2" total="5" passed="3">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="15769" started-at="2017-09-01T08:46:44Z" finished-at="2017-09-01T08:47:00Z">
+  <suite name="Default suite" duration-ms="21053" started-at="2017-09-21T14:49:08Z" finished-at="2017-09-21T14:49:29Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="15769" started-at="2017-09-01T08:46:44Z" finished-at="2017-09-01T08:47:00Z">
+    <test name="Default test" duration-ms="21053" started-at="2017-09-21T14:49:08Z" finished-at="2017-09-21T14:49:29Z">
       <class name="com.selenium.test.functional.DatePickerUC">
-        <test-method status="PASS" signature="setUp(org.testng.ITestContext)[pri:0, instance:com.selenium.test.functional.DatePickerUC@17497425]" name="setUp" is-config="true" duration-ms="147" started-at="2017-09-01T14:16:44Z" finished-at="2017-09-01T14:16:44Z">
+        <test-method status="PASS" signature="setUp(org.testng.ITestContext)[pri:0, instance:com.selenium.test.functional.DatePickerUC@59505b48]" name="setUp" is-config="true" duration-ms="188" started-at="2017-09-21T20:19:08Z" finished-at="2017-09-21T20:19:08Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[org.testng.TestRunner@4d4d48a6]]>
+                <![CDATA[org.testng.TestRunner@1a1d3c1a]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="launchBrowser(org.testng.ITestContext)[pri:0, instance:com.selenium.test.functional.DatePickerUC@17497425]" name="launchBrowser" is-config="true" duration-ms="6893" started-at="2017-09-01T14:16:44Z" finished-at="2017-09-01T14:16:51Z">
+        <test-method status="PASS" signature="launchBrowser(org.testng.ITestContext)[pri:0, instance:com.selenium.test.functional.DatePickerUC@59505b48]" name="launchBrowser" is-config="true" duration-ms="11808" started-at="2017-09-21T20:19:08Z" finished-at="2017-09-21T20:19:20Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[org.testng.TestRunner@4d4d48a6]]>
+                <![CDATA[org.testng.TestRunner@1a1d3c1a]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- launchBrowser -->
-        <test-method status="PASS" signature="getStatus(java.lang.reflect.Method)[pri:0, instance:com.selenium.test.functional.DatePickerUC@17497425]" name="getStatus" is-config="true" duration-ms="5" started-at="2017-09-01T14:16:51Z" finished-at="2017-09-01T14:16:51Z">
+        <test-method status="PASS" signature="getStatus(java.lang.reflect.Method)[pri:0, instance:com.selenium.test.functional.DatePickerUC@59505b48]" name="getStatus" is-config="true" duration-ms="6" started-at="2017-09-21T20:19:20Z" finished-at="2017-09-21T20:19:20Z">
           <params>
             <param index="0">
               <value>
@@ -40,22 +40,22 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getStatus -->
-        <test-method status="PASS" signature="TC_002()[pri:2, instance:com.selenium.test.functional.DatePickerUC@17497425]" name="TC_002" duration-ms="191" started-at="2017-09-01T14:16:51Z" finished-at="2017-09-01T14:16:51Z">
+        <test-method status="PASS" signature="TC_002()[pri:2, instance:com.selenium.test.functional.DatePickerUC@59505b48]" name="TC_002" duration-ms="384" started-at="2017-09-21T20:19:20Z" finished-at="2017-09-21T20:19:20Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TC_002 -->
-        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.selenium.test.functional.DatePickerUC@17497425]" name="getResult" is-config="true" duration-ms="45" started-at="2017-09-01T14:16:51Z" finished-at="2017-09-01T14:16:51Z">
+        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.selenium.test.functional.DatePickerUC@59505b48]" name="getResult" is-config="true" duration-ms="35" started-at="2017-09-21T20:19:20Z" finished-at="2017-09-21T20:19:20Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=TC_002 status=SUCCESS method=DatePickerUC.TC_002()[pri:2, instance:com.selenium.test.functional.DatePickerUC@17497425] output={null}]]]>
+                <![CDATA[[TestResult name=TC_002 status=SUCCESS method=DatePickerUC.TC_002()[pri:2, instance:com.selenium.test.functional.DatePickerUC@59505b48] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getResult -->
-        <test-method status="PASS" signature="getStatus(java.lang.reflect.Method)[pri:0, instance:com.selenium.test.functional.DatePickerUC@17497425]" name="getStatus" is-config="true" duration-ms="0" started-at="2017-09-01T14:16:51Z" finished-at="2017-09-01T14:16:51Z">
+        <test-method status="PASS" signature="getStatus(java.lang.reflect.Method)[pri:0, instance:com.selenium.test.functional.DatePickerUC@59505b48]" name="getStatus" is-config="true" duration-ms="0" started-at="2017-09-21T20:19:20Z" finished-at="2017-09-21T20:19:20Z">
           <params>
             <param index="0">
               <value>
@@ -66,22 +66,22 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getStatus -->
-        <test-method status="PASS" signature="TC_003()[pri:3, instance:com.selenium.test.functional.DatePickerUC@17497425]" name="TC_003" duration-ms="148" started-at="2017-09-01T14:16:51Z" finished-at="2017-09-01T14:16:51Z">
+        <test-method status="PASS" signature="TC_003()[pri:3, instance:com.selenium.test.functional.DatePickerUC@59505b48]" name="TC_003" duration-ms="143" started-at="2017-09-21T20:19:20Z" finished-at="2017-09-21T20:19:20Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TC_003 -->
-        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.selenium.test.functional.DatePickerUC@17497425]" name="getResult" is-config="true" duration-ms="28" started-at="2017-09-01T14:16:51Z" finished-at="2017-09-01T14:16:51Z">
+        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.selenium.test.functional.DatePickerUC@59505b48]" name="getResult" is-config="true" duration-ms="34" started-at="2017-09-21T20:19:20Z" finished-at="2017-09-21T20:19:20Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=TC_003 status=SUCCESS method=DatePickerUC.TC_003()[pri:3, instance:com.selenium.test.functional.DatePickerUC@17497425] output={null}]]]>
+                <![CDATA[[TestResult name=TC_003 status=SUCCESS method=DatePickerUC.TC_003()[pri:3, instance:com.selenium.test.functional.DatePickerUC@59505b48] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getResult -->
-        <test-method status="PASS" signature="getStatus(java.lang.reflect.Method)[pri:0, instance:com.selenium.test.functional.DatePickerUC@17497425]" name="getStatus" is-config="true" duration-ms="1" started-at="2017-09-01T14:16:51Z" finished-at="2017-09-01T14:16:51Z">
+        <test-method status="PASS" signature="getStatus(java.lang.reflect.Method)[pri:0, instance:com.selenium.test.functional.DatePickerUC@59505b48]" name="getStatus" is-config="true" duration-ms="0" started-at="2017-09-21T20:19:20Z" finished-at="2017-09-21T20:19:20Z">
           <params>
             <param index="0">
               <value>
@@ -92,22 +92,22 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getStatus -->
-        <test-method status="PASS" signature="TC_004()[pri:4, instance:com.selenium.test.functional.DatePickerUC@17497425]" name="TC_004" duration-ms="8004" started-at="2017-09-01T14:16:51Z" finished-at="2017-09-01T14:16:59Z">
+        <test-method status="PASS" signature="TC_004()[pri:4, instance:com.selenium.test.functional.DatePickerUC@59505b48]" name="TC_004" duration-ms="7935" started-at="2017-09-21T20:19:20Z" finished-at="2017-09-21T20:19:28Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TC_004 -->
-        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.selenium.test.functional.DatePickerUC@17497425]" name="getResult" is-config="true" duration-ms="42" started-at="2017-09-01T14:16:59Z" finished-at="2017-09-01T14:16:59Z">
+        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.selenium.test.functional.DatePickerUC@59505b48]" name="getResult" is-config="true" duration-ms="38" started-at="2017-09-21T20:19:28Z" finished-at="2017-09-21T20:19:28Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=TC_004 status=SUCCESS method=DatePickerUC.TC_004()[pri:4, instance:com.selenium.test.functional.DatePickerUC@17497425] output={null}]]]>
+                <![CDATA[[TestResult name=TC_004 status=SUCCESS method=DatePickerUC.TC_004()[pri:4, instance:com.selenium.test.functional.DatePickerUC@59505b48] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getResult -->
-        <test-method status="PASS" signature="checkStatus()[pri:0, instance:com.selenium.test.functional.DatePickerUC@17497425]" name="checkStatus" is-config="true" duration-ms="395" started-at="2017-09-01T14:16:59Z" finished-at="2017-09-01T14:17:00Z">
+        <test-method status="PASS" signature="checkStatus()[pri:0, instance:com.selenium.test.functional.DatePickerUC@59505b48]" name="checkStatus" is-config="true" duration-ms="644" started-at="2017-09-21T20:19:28Z" finished-at="2017-09-21T20:19:29Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- checkStatus -->
